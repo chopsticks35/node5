@@ -16,3 +16,14 @@
 
 //read from file 
 //fileStream.pipe(converter);
+
+
+var Converter = require("csvtojson").Converter;
+var converter = new Converter({});
+
+converter.on("end_parsed", function (output) {
+   console.log(output); //result jsonarray 
+});
+ 
+//read from file 
+require("fs").createReadStream("./input.csv").pipe(converter);
